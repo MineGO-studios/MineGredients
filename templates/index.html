@@ -1,72 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>MineGredients Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { 
-            font-family: system-ui, sans-serif; 
-            margin: 0; 
-            background: #f8f8fa; 
-        }
-        .navbar { 
-            background: #24292f; 
-            color: #fff; 
-            padding: 1em 2em; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-        .logo { font-weight: bold; }
-        .main { 
-            max-width: 600px; 
-            margin: 2em auto; 
-            background: #fff; 
-            border-radius: 8px; 
-            padding: 2em; 
-            box-shadow: 0 1px 6px rgba(30,30,30,0.06); 
-        }
-        .welcome { 
-            font-size: 1.2em; 
-            margin-bottom: 1.5em; 
-        }
-        .logout { 
-            color: #fff; 
-            text-decoration: none; 
-            background: #ef476f; 
-            padding: 0.5em 1.3em; 
-            border-radius: 4px; 
-            transition: background 0.15s; 
-        }
-        .logout:hover { background: #d90429; }
-        .instructions { color: #555; font-size: 0.97em; margin-top: 2em; }
-    </style>
+  <meta charset="UTF-8">
+  <title>MineGredients Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f8f8fa; }
+    .navbar { background: #24292f; color: #fff; padding: 1em 2em; display: flex; justify-content: space-between; }
+    .logo { font-weight: bold; }
+    .main { max-width:600px; margin:2em auto; background:#fff; border-radius:8px; padding:2em; box-shadow:0 1px 6px rgba(30,30,30,0.06); }
+    .welcome { font-size:1.2em; margin-bottom:1em; }
+    .logout { color:#fff; text-decoration:none; background:#ef476f; padding:0.5em 1.3em; border-radius:4px; }
+    .logout:hover { background:#d90429; }
+    .banner { background:#eaf6ff; color:#1769aa; padding:1em; border-radius:6px; margin-bottom:1.5em; }
+    .instructions { color:#555; font-size:0.9em; margin-top:2em; }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">MineGredients</div>
-        <a href="/logout" class="logout">Logout</a>
+  <div class="navbar">
+    <div class="logo">MineGredients</div>
+    <a href="/logout" class="logout">Logout</a>
+  </div>
+  <div class="main">
+    {% if onboarding %}
+      <div class="banner">
+        🎉 Welcome! Your personal ingredient sheet has been created and linked.
+      </div>
+    {% endif %}
+    <div class="welcome">👋 Welcome, <strong>{{ user_email }}</strong>!</div>
+    <div>
+      <ul>
+        <li>Start adding your ingredients below (coming soon!)</li>
+        <li>Your data is securely saved in your private Google Sheet</li>
+        <li>Click Logout anytime above</li>
+      </ul>
     </div>
-    <div class="main">
-        <div class="welcome">
-            👋 Welcome, <strong>{{ user_email }}</strong>!<br>
-            <span style="font-size: 1em; color:#666;">
-                You’re securely logged in.<br>
-                Your personal ingredient database is ready!
-            </span>
-        </div>
-        <div>
-            <h3>What’s Next?</h3>
-            <ul>
-                <li>Start adding your ingredients below (coming soon!)</li>
-                <li>Your data is saved directly to your private Google Sheet</li>
-                <li>Log out anytime with the button above</li>
-            </ul>
-        </div>
-        <div class="instructions">
-            <em>Want more features? Track progress and contribute at <a href="https://github.com/MineGO-studios/MineGredients" target="_blank">GitHub</a>.</em>
-        </div>
+    <div class="instructions">
+      <em>Track progress or contribute at <a href="https://github.com/MineGO-studios/MineGredients" target="_blank">GitHub</a>.</em>
     </div>
+  </div>
 </body>
 </html>
